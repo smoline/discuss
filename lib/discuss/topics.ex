@@ -14,4 +14,16 @@ defmodule Discuss.Topics do
     |> Topic.changeset(attrs)
     |> Repo.insert()
   end
+
+  def get_topic!(id), do: Repo.get!(Topic, id)
+
+  def update_topic(%Topic{} = topic, attrs) do
+    topic
+    |> Topic.changeset(attrs)
+    |> Repo.update()
+  end
+
+  def change_topic(%Topic{} = topic) do
+    Topic.changeset(topic, %{})
+  end
 end
