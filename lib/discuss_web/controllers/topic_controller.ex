@@ -4,6 +4,12 @@ defmodule DiscussWeb.TopicController do
   alias Discuss.Topics
   alias Discuss.Topics.Topic
 
+ def index(conn, _params) do
+    topics = Topics.list_topics()
+    render(conn, "index.html", topics: topics)
+  end
+
+
   def new(conn, _params) do
     changeset = Topic.changeset(%Topic{}, %{})
 
