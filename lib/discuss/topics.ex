@@ -20,7 +20,11 @@ defmodule Discuss.Topics do
   def update_topic(%Topic{} = topic, attrs) do
     topic
     |> Topic.changeset(attrs)
-    |> Repo.update()
+    |> Repo.update!()
+  end
+
+  def delete_topic(%Topic{} = topic) do
+    Repo.delete(topic)
   end
 
   def change_topic(%Topic{} = topic) do
