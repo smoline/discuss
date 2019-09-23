@@ -1,0 +1,10 @@
+<h5>Show Topic</h5>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @topic.title %>
+  </li>
+
+</ul>
