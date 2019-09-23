@@ -4,11 +4,12 @@ defmodule Discuss.Topics.Topic do
 
   schema "topics" do
     field :title, :string
+    belongs_to :user, Discuss.Users.User
   end
 
   def changeset(struct, attrs) do
     struct
-    |> cast(attrs, [:title])
-    |> validate_required([:title])
+    |> cast(attrs, [:title, :user_id])
+    |> validate_required([:title, :user_id])
   end
 end
