@@ -18,11 +18,6 @@ defmodule Discuss.Topics do
 
   def get_topic!(id), do: Repo.get!(Topic, id)
 
-  def get_topic_and_comments(id) do
-    Repo.get(Topic, id)
-    |> Repo.preload(:comments)
-  end
-
   def update_topic(%Topic{} = topic, attrs) do
     topic
     |> Topic.changeset(attrs)
@@ -43,4 +38,10 @@ defmodule Discuss.Topics do
     |> Comment.changeset(%{content: content})
     |> Repo.insert()
   end
+
+  def get_topic_and_comments(id) do
+    Repo.get(Topic, id)
+    |> Repo.preload(comments: [:user])
+  end
+
 end
