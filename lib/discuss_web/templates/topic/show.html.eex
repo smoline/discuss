@@ -1,10 +1,15 @@
-<h5>Show Topic</h5>
+<h5><%= @topic.title %></h5>
 
-<ul>
+<div class="input-field">
+  <textarea class="meterialize-textarea"></textarea>
+  <button class="btn">Add Comment</button>
+  <ul class="collection">
+    
+  </ul>
+</div>
 
-  <li>
-    <strong>Title:</strong>
-    <%= @topic.title %>
-  </li>
-
-</ul>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    window.createSocket(<%= @topic.id %>);
+  });
+</script>

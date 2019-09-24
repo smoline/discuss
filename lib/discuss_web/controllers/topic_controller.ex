@@ -36,9 +36,9 @@ defmodule DiscussWeb.TopicController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    topic = Topics.get_topic!(id)
-    render(conn, "show.html", topic: topic)
+  def show(conn, %{"id" => topic_id}) do
+    topic = Topics.get_topic!(topic_id)
+    render conn, "show.html", topic: topic
   end
 
   def edit(conn, %{"id" => topic_id}) do
