@@ -37,9 +37,9 @@ defmodule Discuss.Topics do
     Topic.changeset(topic, %{})
   end
 
-  def build_topic_assoc_create_comment(%Topic{} = topic, %{"content" => content}) do
+  def build_topic_assoc_create_comment(%Topic{} = topic, %{"content" => content}, user_id) do
     topic
-    |> Ecto.build_assoc(:comments)
+    |> Ecto.build_assoc(:comments, user_id: user_id)
     |> Comment.changeset(%{content: content})
     |> Repo.insert()
   end
